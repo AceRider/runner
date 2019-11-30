@@ -8,7 +8,7 @@ public class PoolItem
 {
     public GameObject prefab;
     public int amount;
-    public bool expandable;
+    public bool expendable;
 }
 
 public class Pool : MonoBehaviour
@@ -47,7 +47,7 @@ public class Pool : MonoBehaviour
         
         foreach(PoolItem item in items)
         {
-            if(item.expandable)
+            if(item.expendable)
             {
                 GameObject obj = Instantiate(item.prefab);
                 obj.SetActive(false);
@@ -56,12 +56,6 @@ public class Pool : MonoBehaviour
             }
         }
         return null;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
 

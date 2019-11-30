@@ -70,7 +70,7 @@ public class PlayerController : MonoBehaviour
     //Check the collision to check when the character dies.
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Wall")
+        if ((collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Wall") && !isDead) 
         {
             anim.SetTrigger("isDead");
             isDead = true;
@@ -95,6 +95,10 @@ public class PlayerController : MonoBehaviour
                     if(hs < PlayerPrefs.GetInt("score"))
                         PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
                 }
+                else
+                {
+                    PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
+                }
             }
         }
         else
@@ -103,7 +107,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //In A T Section platform, check if the player can turn. Other wise he only can run forward
+    //In a TSection platform, check if the player can turn. Other wise he only can run forward
     private void OnTriggerEnter(Collider other)
     {
         if(other is BoxCollider && GenerateWorld.lastPlatform.tag != "platformTSection")
