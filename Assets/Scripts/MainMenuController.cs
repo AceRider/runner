@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Runner.Utils;
+using Runner.Common;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject[] panels;
@@ -35,12 +37,12 @@ public class MainMenuController : MonoBehaviour
     public void LoadGameScene()
     {
         PlayerPrefs.SetInt("lives", maxLives);
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        RunnerUtils.OpenScene(RunnerSceneType.Game);
     }
 
     public void QuitGame()
     {
-        Application.Quit();
+        RunnerUtils.Quit();
     }
 
 }
