@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour
     public RawImage[] icons;
 
     public GameObject gameOverPanel;
+    public Text highScore;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +39,15 @@ public class PlayerController : MonoBehaviour
         
         //to create the first platform attached
         GenerateWorld.RunDummy();
+
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            highScore.text = "High Score: " + PlayerPrefs.GetInt("highscore");
+        }
+        else
+        {
+            highScore.text = "High Score: 0";
+        }
 
         isDead = false;
         livesLeft = PlayerPrefs.GetInt("lives");
