@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Runner.Utils;
+using Runner.Common;
 
 public class GenerateWorld : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class GenerateWorld : MonoBehaviour
 
     public void QuitToMenu()
     {
-        SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        RunnerUtils.OpenScene(RunnerSceneType.Menu);
     }
 
     public static void RunDummy()

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Runner.Utils;
+using Runner.Common;
 
 public class PlayerController : MonoBehaviour
 {
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour
 
     void RestartGame()
     {
-        SceneManager.LoadScene("Game", LoadSceneMode.Single);
+        RunnerUtils.OpenScene(RunnerSceneType.Game);
     }
 
     //Check the collision to check when the character dies.
