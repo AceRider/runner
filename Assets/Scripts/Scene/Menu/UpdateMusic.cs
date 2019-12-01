@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MainMenu
+namespace Runner.Menu
 {
     //Control the music
     public class UpdateMusic : MonoBehaviour
