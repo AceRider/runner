@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace World
+namespace Runner.Scene.Game
 {
     //Create a pool of objects to control quantity
     #region Pool Item class

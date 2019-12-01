@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Runner.Utils
+namespace Runner.Common
 {
     public class RunnerUtils
     {

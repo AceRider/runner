@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using Runner.Menu;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace MainMenu
+namespace Runner.Control
 {
     public class GameData : MonoBehaviour
     {
@@ -30,13 +29,13 @@ namespace MainMenu
             #endregion
 
             PlayerPrefs.SetInt("score", 0);
-            musicSlider.GetComponent<MainMenu.UpdateMusic>().Start();
-            soundSlider.GetComponent<MainMenu.UpdateSound>().Start();
+            musicSlider.GetComponent<UpdateMusic>().Start();
+            soundSlider.GetComponent<UpdateSound>().Start();
         }
 
-        public void UpdateScore(int s)
+        public void UpdateScore(int score_new)
         {
-            score += s;
+            score += score_new;
             PlayerPrefs.SetInt("score", score);
             if (scoreText != null)
                 scoreText.text = "Score: " + score;

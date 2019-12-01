@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Runner.Control;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace World
+namespace Runner.Scene.Game
 {
     public class PickUp : MonoBehaviour
     {
@@ -19,8 +20,8 @@ namespace World
             //check if the player picks the coin
             if (other.gameObject.tag == "Player")
             {
-                MainMenu.GameData.singleton.UpdateScore(10);
-                PlayerManager.PlayerController.soundEffect[1].Play();
+                GameData.singleton.UpdateScore(10);
+                PlayerController.soundEffect[1].Play();
                 foreach (MeshRenderer meshObj in meshArray)
                     meshObj.enabled = false;
             }

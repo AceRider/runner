@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace World
+namespace Runner.Scene.Game
 {
     //Check the wall is triggered and explode it
     public class DestroyWall : MonoBehaviour

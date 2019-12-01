@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Runner.Utils;
 using Runner.Common;
 
 namespace MainMenu

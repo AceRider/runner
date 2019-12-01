@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using Runner.Utils;
 using Runner.Common;
+using Runner.Control;
 
-namespace PlayerManager
+namespace Runner.Scene.Game
 {
     //Controller responsible to all behavior of the player
     public class PlayerController : MonoBehaviour
@@ -62,7 +62,7 @@ namespace PlayerManager
             soundEffect = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
 
             //to create the first platform attached
-            World.GenerateWorld.RunGenerator();
+            GenerateWorld.RunGenerator();
 
             GetUpdatedHighScore();
             GetUpdatedLives();
@@ -72,15 +72,15 @@ namespace PlayerManager
         {
             if (PlayerController.isDead) return;
 
-            if (Control.SwipeInput.Instance.SwipeUp)
+            if (SwipeInput.Instance.SwipeUp)
             {
                 PlayerJump();
             }
-            else if (Control.SwipeInput.Instance.SwipeRight)
+            else if (SwipeInput.Instance.SwipeRight)
             {
                 PlayerRight();
             }
-            else if (Control.SwipeInput.Instance.SwipeLeft)
+            else if (SwipeInput.Instance.SwipeLeft)
             {
                 PlayerLeft();
             }
@@ -119,8 +119,8 @@ namespace PlayerManager
         //In a TSection platform, check if the player can turn. Other wise he only can run forward
         private void OnTriggerEnter(Collider other)
         {
-            if (other is BoxCollider && World.GenerateWorld.recentPlatform.tag != "platformTSection")
-                World.GenerateWorld.RunGenerator();
+            if (other is BoxCollider && GenerateWorld.recentPlatform.tag != "platformTSection")
+                GenerateWorld.RunGenerator();
 
             if (other is CapsuleCollider)
             {
@@ -251,11 +251,11 @@ namespace PlayerManager
         private void PlayerTurnDirection()
         {
             //update dummy to create platform after change direction
-            World.GenerateWorld.worldGenerator.transform.forward = -this.transform.forward;
-            World.GenerateWorld.RunGenerator();
+            GenerateWorld.worldGenerator.transform.forward = -this.transform.forward;
+            GenerateWorld.RunGenerator();
 
-            if (World.GenerateWorld.recentPlatform.tag != "platformTSection")
-                World.GenerateWorld.RunGenerator();
+            if (GenerateWorld.recentPlatform.tag != "platformTSection")
+                GenerateWorld.RunGenerator();
 
             this.transform.position = new Vector3(startPosition.x, this.transform.position.y, startPosition.z);
         }

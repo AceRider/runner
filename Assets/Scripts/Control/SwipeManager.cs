@@ -3,88 +3,91 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SwipeManager : MonoBehaviour
+namespace Runner.Control
 {
-    private Vector2 fingerDown;
-    private Vector2 fingerUp;
-
-    public float swipeDistance = 25f;
-
-    private bool swipeLeft;
-    private bool swipeRight;
-    private bool swipeUp;
-
-    public bool SwipeLeft { get { return swipeLeft; } }
-    public bool SwipeRight { get { return swipeRight; } }
-    public bool SwipeUp { get { return swipeUp; } }
-
-    //public Text textScreen;
-
-    void Update()
+    public class SwipeManager : MonoBehaviour
     {
-        swipeUp = false;
-        swipeRight = false;
-        swipeLeft = false;
+        private Vector2 fingerDown;
+        private Vector2 fingerUp;
 
-        if (Input.touchCount > 0)
+        public float swipeDistance = 25f;
 
-            foreach (Touch touch in Input.touches)
-            {
-                var positionCurrent = touch.position;
-                if (touch.phase == TouchPhase.Began)
-                {
-                    fingerUp = positionCurrent;
-                    fingerDown = positionCurrent;
-                }
+        private bool swipeLeft;
+        private bool swipeRight;
+        private bool swipeUp;
 
-                if ((touch.phase == TouchPhase.Moved) || (touch.phase == TouchPhase.Ended))
-                {
-                    fingerDown = positionCurrent;
-                    DetectSwipe();
-                }
-            }
-    }
+        public bool SwipeLeft { get { return swipeLeft; } }
+        public bool SwipeRight { get { return swipeRight; } }
+        public bool SwipeUp { get { return swipeUp; } }
 
-    void DetectSwipe()
-    {
+        //public Text textScreen;
 
-        var verticalValeu = VerticalMovement();
-        var horizontalVAlue = HorizontalMovement();
-
-        if (verticalValeu > swipeDistance && verticalValeu > horizontalVAlue)
+        void Update()
         {
-            if (fingerDown.y - fingerUp.y > 0)
-            {
-                //textScreen.text = "UP";
-                swipeUp = true;
-            }
-            fingerUp = fingerDown;
+            swipeUp = false;
+            swipeRight = false;
+            swipeLeft = false;
 
+            if (Input.touchCount > 0)
+
+                foreach (Touch touch in Input.touches)
+                {
+                    var positionCurrent = touch.position;
+                    if (touch.phase == TouchPhase.Began)
+                    {
+                        fingerUp = positionCurrent;
+                        fingerDown = positionCurrent;
+                    }
+
+                    if ((touch.phase == TouchPhase.Moved) || (touch.phase == TouchPhase.Ended))
+                    {
+                        fingerDown = positionCurrent;
+                        DetectSwipe();
+                    }
+                }
         }
-        else if (horizontalVAlue > swipeDistance && horizontalVAlue > verticalValeu)
+
+        void DetectSwipe()
         {
-            if (fingerDown.x - fingerUp.x < 0)
-            {
-                //textScreen.text = "RIGHT";
-                swipeRight = true;
-            }
-            else if (fingerDown.x - fingerUp.x > 0)
-            {
-                //textScreen.text = "LEFT";
-                swipeLeft = true;
-            }
-            fingerUp = fingerDown;
 
+            var verticalValeu = VerticalMovement();
+            var horizontalVAlue = HorizontalMovement();
+
+            if (verticalValeu > swipeDistance && verticalValeu > horizontalVAlue)
+            {
+                if (fingerDown.y - fingerUp.y > 0)
+                {
+                    //textScreen.text = "UP";
+                    swipeUp = true;
+                }
+                fingerUp = fingerDown;
+
+            }
+            else if (horizontalVAlue > swipeDistance && horizontalVAlue > verticalValeu)
+            {
+                if (fingerDown.x - fingerUp.x < 0)
+                {
+                    //textScreen.text = "RIGHT";
+                    swipeRight = true;
+                }
+                else if (fingerDown.x - fingerUp.x > 0)
+                {
+                    //textScreen.text = "LEFT";
+                    swipeLeft = true;
+                }
+                fingerUp = fingerDown;
+
+            }
         }
-    }
 
-    float VerticalMovement()
-    {
-        return Mathf.Abs(fingerDown.y - fingerUp.y);
-    }
+        float VerticalMovement()
+        {
+            return Mathf.Abs(fingerDown.y - fingerUp.y);
+        }
 
-    float HorizontalMovement()
-    {
-        return Mathf.Abs(fingerDown.x - fingerUp.x);
+        float HorizontalMovement()
+        {
+            return Mathf.Abs(fingerDown.x - fingerUp.x);
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Runner.Control;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,8 +11,8 @@ namespace World
         // Start is called before the first frame update
         void Start()
         {
-            MainMenu.GameData.singleton.scoreText = this.GetComponent<Text>();
-            MainMenu.GameData.singleton.UpdateScore(0);
+            GameData.singleton.scoreText = this.GetComponent<Text>();
+            GameData.singleton.UpdateScore(0);
         }
     }
 }

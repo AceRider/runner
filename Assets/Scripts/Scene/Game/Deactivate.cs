@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace World
+namespace Runner.Scene.Game
 {
     public class Deactivate : MonoBehaviour
     {
@@ -11,7 +11,7 @@ namespace World
         //remove platform after the player run
         private void OnCollisionExit(Collision player)
         {
-            if (PlayerManager.PlayerController.isDead) return;
+            if (PlayerController.isDead) return;
             if (player.gameObject.tag == "Player" && !isDeactivate)
             {
                 Invoke("SetInactive", 4.0f);

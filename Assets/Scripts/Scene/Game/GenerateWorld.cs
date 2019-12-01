@@ -1,10 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Runner.Utils;
 using Runner.Common;
 
-namespace World
+namespace Runner.Scene.Game
 {
     public class GenerateWorld : MonoBehaviour
     {
@@ -51,7 +50,7 @@ namespace World
         }
         private static void SetWorldGenPosition(int fwd)
         {
-            worldGenerator.transform.position = recentPlatform.transform.position + PlayerManager.PlayerController.player.transform.forward * fwd;
+            worldGenerator.transform.position = recentPlatform.transform.position + PlayerController.player.transform.forward * fwd;
         }
         #endregion
         public void QuitToMenu()
