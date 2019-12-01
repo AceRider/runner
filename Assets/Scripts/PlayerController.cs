@@ -72,15 +72,15 @@ namespace PlayerManager
         {
             if (PlayerController.isDead) return;
 
-            if (SwipeInput.Instance.SwipeUp)
+            if (Control.SwipeInput.Instance.SwipeUp)
             {
                 PlayerJump();
             }
-            else if (SwipeInput.Instance.SwipeRight)
+            else if (Control.SwipeInput.Instance.SwipeRight)
             {
                 PlayerRight();
             }
-            else if (SwipeInput.Instance.SwipeLeft)
+            else if (Control.SwipeInput.Instance.SwipeLeft)
             {
                 PlayerLeft();
             }

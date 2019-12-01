@@ -2,33 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PickUp : MonoBehaviour
+namespace World
 {
-    MeshRenderer[] meshRenderers;
-
-    private void Start()
+    public class PickUp : MonoBehaviour
     {
-        meshRenderers = this.GetComponentsInChildren<MeshRenderer>();
-    }
+        #region Private properties
+        private MeshRenderer[] meshArray;
+        #endregion
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
+        private void Start()
         {
-            GameData.singleton.UpdateScore(10);
-            PlayerManager.PlayerController.soundEffect[1].Play();
-            foreach (MeshRenderer m in meshRenderers)
-                m.enabled = false;
+            meshArray = this.GetComponentsInChildren<MeshRenderer>();
         }
-
-    }
-
-    private void OnEnable()
-    {
-        if (meshRenderers != null)
+        private void OnTriggerEnter(Collider other)
         {
-            foreach (MeshRenderer m in meshRenderers)
-                m.enabled = true;
+            //check if the player picks the coin
+            if (other.gameObject.tag == "Player")
+            {
+                MainMenu.GameData.singleton.UpdateScore(10);
+                PlayerManager.PlayerController.soundEffect[1].Play();
+                foreach (MeshRenderer meshObj in meshArray)
+                    meshObj.enabled = false;
+            }
+        }
+        private void OnEnable()
+        {
+            //enable the coin after activate the platforms
+            if (meshArray != null)
+            {
+                foreach (MeshRenderer m in meshArray)
+                    m.enabled = true;
+            }
         }
     }
 }

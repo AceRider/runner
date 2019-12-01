@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Deactivate : MonoBehaviour
+namespace World
 {
-    bool isDeactivate = false;
-    
-    //remove platform after the player run
-    private void OnCollisionExit(Collision player)
+    public class Deactivate : MonoBehaviour
     {
-        if (PlayerManager.PlayerController.isDead) return;
-        if (player.gameObject.tag == "Player" && !isDeactivate)
-        {
-            Invoke("SetInactive", 4.0f);
-            isDeactivate = true;
-        }
-    }
+        bool isDeactivate = false;
 
-    void SetInactive()
-    {
-        this.gameObject.SetActive(false);
-        isDeactivate = false;
+        //remove platform after the player run
+        private void OnCollisionExit(Collision player)
+        {
+            if (PlayerManager.PlayerController.isDead) return;
+            if (player.gameObject.tag == "Player" && !isDeactivate)
+            {
+                Invoke("SetInactive", 4.0f);
+                isDeactivate = true;
+            }
+        }
+
+        void SetInactive()
+        {
+            this.gameObject.SetActive(false);
+            isDeactivate = false;
+        }
     }
 }

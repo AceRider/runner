@@ -3,37 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UpdateSound : MonoBehaviour
+namespace MainMenu
 {
-    List<AudioSource> soundEffect = new List<AudioSource>();
-    // Start is called before the first frame update
-    public void Start()
+    public class UpdateSound : MonoBehaviour
     {
-        AudioSource[] allAS = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
-        for(int i = 1; i < allAS.Length; i++)
-            soundEffect.Add(allAS[i]);
-
-        Slider soundEffectSlider = this.GetComponent<Slider>();
-
-        if(PlayerPrefs.HasKey("sfxvolume"))
+        List<AudioSource> soundEffect = new List<AudioSource>();
+        // Start is called before the first frame update
+        public void Start()
         {
-            soundEffectSlider.value = PlayerPrefs.GetFloat("sfxvolume");
-            UpdateSoundVolume(soundEffectSlider.value);
+            AudioSource[] allAS = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
+            for (int i = 1; i < allAS.Length; i++)
+                soundEffect.Add(allAS[i]);
+
+            Slider soundEffectSlider = this.GetComponent<Slider>();
+
+            if (PlayerPrefs.HasKey("sfxvolume"))
+            {
+                soundEffectSlider.value = PlayerPrefs.GetFloat("sfxvolume");
+                UpdateSoundVolume(soundEffectSlider.value);
+            }
+            else
+            {
+                soundEffectSlider.value = 1;
+                UpdateSoundVolume(1);
+            }
         }
-        else
-        {
-            soundEffectSlider.value = 1;
-            UpdateSoundVolume(1);
-        }
-    }
 
-    // Update is called once per frame
-    public void UpdateSoundVolume(float value)
-    {
-        PlayerPrefs.SetFloat("sfxvolume", value);
-        foreach(AudioSource sound in soundEffect)
+        // Update is called once per frame
+        public void UpdateSoundVolume(float value)
         {
-            sound.volume = value;
+            PlayerPrefs.SetFloat("sfxvolume", value);
+            foreach (AudioSource sound in soundEffect)
+            {
+                sound.volume = value;
+            }
         }
     }
 }
