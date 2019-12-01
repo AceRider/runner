@@ -6,90 +6,75 @@ using UnityEngine.UI;
 using Runner.Utils;
 using Runner.Common;
 
+//Controller responsible to all behavior of the player
 public class PlayerController : MonoBehaviour
 {
-    Animator anim;
-    public static GameObject player;
-    public static GameObject currentPlatform;
-    public static AudioSource[] soundEffect;
-
-    bool canTurn = false;
-    Vector3 startPosition;
-    public static bool isDead;
-    Rigidbody rb;
+    #region Public properties
+    [Header("PlayerAttack")]
     public GameObject attack;
     public Transform attackStartPos;
-    Rigidbody aRb;
 
-    int livesLeft;
+    [Header("PlayerLives")]
     public Texture aliveIcon;
     public Texture deadIcon;
     public RawImage[] icons;
 
+    [Header("PlayerScore")]
     public GameObject gameOverPanel;
     public Text highScore;
 
+    [Header("PlayerControl")]
+    [Range(1.0f, 5.0f)]
     public float swipeDistance = 1f;
+    #endregion
+    
+    #region Public static properties
+    public static GameObject player;
+    public static GameObject currentPlatform;
+    public static AudioSource[] soundEffect;
+    public static bool isDead;
+    #endregion
+    
+    #region Private properties
+    private int livesLeft;
+    private Animator playerAnim;
+    private bool canTurn = false;
+    private Vector3 startPosition;
+    private Rigidbody playerRigidbody;
+    private Rigidbody attackRigidbody;
+    private string highScoreText;
+    #endregion
+
+    #region String properties
+    private const string highScoreStr = "High Score: ";
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        anim = this.GetComponent<Animator>();
-        rb = this.GetComponent<Rigidbody>();
-        aRb = attack.GetComponent<Rigidbody>();
-        soundEffect = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
-
         player = this.gameObject;
         startPosition = player.transform.position;
+
+        playerAnim = this.GetComponent<Animator>();
+        playerRigidbody = this.GetComponent<Rigidbody>();
+        attackRigidbody = attack.GetComponent<Rigidbody>();
+        
+        soundEffect = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
         
         //to create the first platform attached
         GenerateWorld.RunDummy();
 
-        if (PlayerPrefs.HasKey("highscore"))
-        {
-            highScore.text = "High Score: " + PlayerPrefs.GetInt("highscore");
-        }
-        else
-        {
-            highScore.text = "High Score: 0";
-        }
-
-        isDead = false;
-        livesLeft = PlayerPrefs.GetInt("lives");
-
-        for(int i = 0; i < icons.Length; i++)
-        {
-            if (i >= livesLeft)
-                icons[i].texture = deadIcon;
-        }
+        GetUpdatedHighScore();
+        GetUpdatedLives();
     }
 
-    void HalfMoonPunch() 
-    {
-        //shout the attack from the right hand of the character
-        attack.transform.position = attackStartPos.position;
-        attack.SetActive(true);
-        aRb.AddForce(this.transform.forward * 4000);
-        //deactivate the sphere to be used again
-        Invoke("KillAttack", 1);
-    }
-
-    void KillAttack()
-    {
-        attack.SetActive(false);
-    }
-
-    void RestartGame()
-    {
-        RunnerUtils.OpenScene(RunnerSceneType.Game);
-    }
-
-    //Check the collision to check when the character dies.
+    #region Collision & Trigger
+    //The collision to check when the character dies.
     private void OnCollisionEnter(Collision collision)
     {
         if ((collision.gameObject.tag == "Fire" || collision.gameObject.tag == "Wall") && !isDead) 
         {
-            anim.SetTrigger("isDead");
+            playerAnim.SetTrigger("isDead");
             isDead = true;
             livesLeft--;
             PlayerPrefs.SetInt("lives", livesLeft);
@@ -105,17 +90,7 @@ public class PlayerController : MonoBehaviour
                 gameOverPanel.SetActive(true);
 
                 //save last score and verify if is the highest score saved
-                PlayerPrefs.SetInt("lastscore", PlayerPrefs.GetInt("score"));
-                if(PlayerPrefs.HasKey("highscore"))
-                {
-                    int hs = PlayerPrefs.GetInt("highscore");
-                    if(hs < PlayerPrefs.GetInt("score"))
-                        PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
-                }
-                else
-                {
-                    PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
-                }
+                SetUpdatedHighScore();
             }
         }
         else
@@ -141,30 +116,92 @@ public class PlayerController : MonoBehaviour
         if (other is CapsuleCollider)
             canTurn = false;
     }
-
-    void StopJump() 
+    #endregion
+    #region Updates methods
+    //Get the lives for the player
+    private void GetUpdatedLives()
     {
-        anim.SetBool("isJumping", false);
+        isDead = false;
+        livesLeft = PlayerPrefs.GetInt("lives");
+        for (int i = 0; i < icons.Length; i++)
+        {
+            if (i >= livesLeft)
+                icons[i].texture = deadIcon;
+        }
+    }
+    //Get the HighScore in PlayerPrefs
+    private void GetUpdatedHighScore()
+    {
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            highScore.text = highScoreStr + PlayerPrefs.GetInt("highscore");
+        }
+        else
+        {
+            highScore.text = highScoreStr + "0";
+        }
+    }
+
+    //Update the HighScore in PlayerPrefs
+    private void SetUpdatedHighScore()
+    {
+        PlayerPrefs.SetInt("lastscore", PlayerPrefs.GetInt("score"));
+        if (PlayerPrefs.HasKey("highscore"))
+        {
+            int hs = PlayerPrefs.GetInt("highscore");
+            if (hs < PlayerPrefs.GetInt("score"))
+                PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
+        }
+        else
+        {
+            PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
+        }
+    }
+    #endregion
+    #region Invoke methods
+    //Call the function for player attack
+    void HalfMoonPunch()
+    {
+        //shot the attack from the right hand of the character
+        attack.transform.position = attackStartPos.position;
+        attack.SetActive(true);
+        attackRigidbody.AddForce(this.transform.forward * 4000);
+        //deactivate the sphere to be used again
+        Invoke("KillAttack", 1);
+    }
+    //Stop the attack
+    void KillAttack()
+    {
+        attack.SetActive(false);
+    }
+    void StopJump()
+    {
+        playerAnim.SetBool("isJumping", false);
     }
 
     void StopMagic()
     {
-        anim.SetBool("isMagic", false);
+        playerAnim.SetBool("isMagic", false);
     }
+    void RestartGame()
+    {
+        RunnerUtils.OpenScene(RunnerSceneType.Game);
+    }
+    #endregion
 
     // Update is called once per frame
     void Update()
     {
         if (PlayerController.isDead) return;
-        if(SwipeInput.Instance.SwipeUp && anim.GetBool("isMagic") == false)
+        if(SwipeInput.Instance.SwipeUp && playerAnim.GetBool("isMagic") == false)
         {
-            anim.SetBool("isJumping",true);
+            playerAnim.SetBool("isJumping",true);
             //Set the rigidbody up along with the animation
-            rb.AddForce(Vector3.up * 200);
+            playerRigidbody.AddForce(Vector3.up * 200);
         }
-        else if (SwipeInput.Instance.DoubleTap && anim.GetBool("isJumping") == false)
+        else if (SwipeInput.Instance.DoubleTap && playerAnim.GetBool("isJumping") == false)
         {
-            anim.SetBool("isMagic", true);
+            playerAnim.SetBool("isMagic", true);
         }
         else if (SwipeInput.Instance.SwipeRight && canTurn)
         {
@@ -199,4 +236,5 @@ public class PlayerController : MonoBehaviour
             this.transform.Translate(-swipeDistance, 0, 0);
         }
     }
+
 }

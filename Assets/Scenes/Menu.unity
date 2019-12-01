@@ -1923,8 +1923,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 0}
   score: 0
-  musicSlider: {fileID: 2083452560}
-  soundSlider: {fileID: 32663639}
+  musicSlider: {fileID: 32663639}
+  soundSlider: {fileID: 2083452560}
 --- !u!4 &1226218798
 Transform:
   m_ObjectHideFlags: 0
