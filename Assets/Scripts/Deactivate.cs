@@ -9,7 +9,7 @@ public class Deactivate : MonoBehaviour
     //remove platform after the player run
     private void OnCollisionExit(Collision player)
     {
-        if (PlayerController.isDead) return;
+        if (PlayerManager.PlayerController.isDead) return;
         if (player.gameObject.tag == "Player" && !dScheduled)
         {
             Invoke("SetInactive", 4.0f);

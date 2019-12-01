@@ -16,7 +16,7 @@ public class PickUp : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             GameData.singleton.UpdateScore(10);
-            PlayerController.soundEffect[1].Play();
+            PlayerManager.PlayerController.soundEffect[1].Play();
             foreach (MeshRenderer m in meshRenderers)
                 m.enabled = false;
         }
