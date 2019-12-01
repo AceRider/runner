@@ -27,6 +27,8 @@ public class PlayerController : MonoBehaviour
     public GameObject gameOverPanel;
     public Text highScore;
 
+    public float swipeDistance = 1f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,7 +127,7 @@ public class PlayerController : MonoBehaviour
         if(other is BoxCollider && GenerateWorld.lastPlatform.tag != "platformTSection")
             GenerateWorld.RunDummy();
 
-        if (other is SphereCollider)
+        if (other is CapsuleCollider)
         {
             canTurn = true;
         }
@@ -133,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other is SphereCollider)
+        if (other is CapsuleCollider)
             canTurn = false;
     }
 
@@ -187,11 +189,11 @@ public class PlayerController : MonoBehaviour
         }
         else if (SwipeInput.Instance.SwipeRight)
         {
-            this.transform.Translate(-0.5f, 0, 0);
+            this.transform.Translate(swipeDistance, 0, 0);
         }
         else if (SwipeInput.Instance.SwipeLeft)
         {
-            this.transform.Translate(0.5f, 0, 0);
+            this.transform.Translate(-swipeDistance, 0, 0);
         }
     }
 }

@@ -9,6 +9,7 @@ public class DestroyWall : MonoBehaviour
     List<Vector3> positions = new List<Vector3>();
     List<Quaternion> rotations = new List<Quaternion>();
     Collider col;
+    public GameObject explotion;
     
     private void Awake()
     {
@@ -36,6 +37,8 @@ public class DestroyWall : MonoBehaviour
     {
         if (collision.gameObject.tag == "Hadouken")
         {
+            GameObject explotionObj = Instantiate(explotion, collision.contacts[0].point, Quaternion.identity);
+            Destroy(explotionObj, 2.5f);
             //using the list of blocks to deactivate kinematic and apply physics
             col.enabled = false;
             foreach (Rigidbody r in bricksRBs)

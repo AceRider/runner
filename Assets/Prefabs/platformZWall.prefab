@@ -1444,6 +1444,8 @@ MonoBehaviour:
   - {fileID: 3057987967988814156}
   - {fileID: 3057987966858381136}
   - {fileID: 3057987968012728435}
+  explotion: {fileID: 1862248141223905658, guid: afb1ddae14ab49741bfa3fbfc5a1bf15,
+    type: 3}
 --- !u!1 &3057987967988814156
 GameObject:
   m_ObjectHideFlags: 0
