@@ -69,7 +69,28 @@ namespace PlayerManager
             GetUpdatedHighScore();
             GetUpdatedLives();
         }
+        // Update is called once per frame
+        void Update()
+        {
+            if (PlayerController.isDead) return;
 
+            if (SwipeInput.Instance.SwipeUp)
+            {
+                PlayerJump();
+            }
+            else if (SwipeInput.Instance.DoubleTap)
+            {
+                PlayerAttack();
+            }
+            else if (SwipeInput.Instance.SwipeRight)
+            {
+                PlayerRight();
+            }
+            else if (SwipeInput.Instance.SwipeLeft)
+            {
+                PlayerLeft();
+            }
+        }
         #region Collision & Trigger
         //The collision to check when the character dies.
         private void OnCollisionEnter(Collision collision)
@@ -190,7 +211,7 @@ namespace PlayerManager
             RunnerUtils.OpenScene(RunnerSceneType.Game);
         }
         #endregion
-
+        #region Player Actions
         private void PlayerAttack()
         {
             //check if player is not jumping before attack
@@ -214,14 +235,7 @@ namespace PlayerManager
             if (canTurn)
             {
                 this.transform.Rotate(Vector3.up * 90);
-                //update dummy to create platform after change direction
-                GenerateWorld.dummyTraveller.transform.forward = -this.transform.forward;
-                GenerateWorld.RunDummy();
-
-                if (GenerateWorld.lastPlatform.tag != "platformTSection")
-                    GenerateWorld.RunDummy();
-
-                this.transform.position = new Vector3(startPosition.x, this.transform.position.y, startPosition.z);
+                PlayerTurnDirection();
             }
             else
             {
@@ -233,43 +247,24 @@ namespace PlayerManager
             if (canTurn)
             {
                 this.transform.Rotate(Vector3.up * -90);
-                //update dummy to create platform after change direction
-                GenerateWorld.dummyTraveller.transform.forward = -this.transform.forward;
-                GenerateWorld.RunDummy();
-
-                if (GenerateWorld.lastPlatform.tag != "platformTSection")
-                    GenerateWorld.RunDummy();
-
-                this.transform.position = new Vector3(startPosition.x, this.transform.position.y, startPosition.z);
+                PlayerTurnDirection();
             }
             else
             {
                 this.transform.Translate(-swipeDistance, 0, 0);
             }
         }
-
-        // Update is called once per frame
-        void Update()
+        private void PlayerTurnDirection()
         {
-            if (PlayerController.isDead) return;
-           
-            if (SwipeInput.Instance.SwipeUp)
-            {
-                PlayerJump();
-            }
-            else if (SwipeInput.Instance.DoubleTap)
-            {
-                PlayerAttack();
-            }
-            else if (SwipeInput.Instance.SwipeRight)
-            {
-                PlayerRight();
-            }
-            else if (SwipeInput.Instance.SwipeLeft)
-            {
-                PlayerLeft();
-            }
-        }
+            //update dummy to create platform after change direction
+            GenerateWorld.dummyTraveller.transform.forward = -this.transform.forward;
+            GenerateWorld.RunDummy();
 
+            if (GenerateWorld.lastPlatform.tag != "platformTSection")
+                GenerateWorld.RunDummy();
+
+            this.transform.position = new Vector3(startPosition.x, this.transform.position.y, startPosition.z);
+        }
+        #endregion
     }
 }
