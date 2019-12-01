@@ -26,6 +26,7 @@ namespace PlayerManager
         public Text highScore;
 
         [Header("PlayerControl")]
+        public GameObject attackButton;
         [Range(1.0f, 5.0f)]
         public float swipeDistance = 1f;
         #endregion
@@ -78,10 +79,10 @@ namespace PlayerManager
             {
                 PlayerJump();
             }
-            else if (SwipeInput.Instance.DoubleTap)
-            {
-                PlayerAttack();
-            }
+            //else if (SwipeInput.Instance.DoubleTap)
+            //{
+            //    PlayerAttack();
+            //}
             else if (SwipeInput.Instance.SwipeRight)
             {
                 PlayerRight();
@@ -111,6 +112,7 @@ namespace PlayerManager
                     //no more lives left, show game over screen
                     icons[0].texture = deadIcon;
                     gameOverPanel.SetActive(true);
+                    attackButton.SetActive(false);
 
                     //save last score and verify if is the highest score saved
                     SetUpdatedHighScore();
@@ -121,7 +123,6 @@ namespace PlayerManager
                 currentPlatform = collision.gameObject;
             }
         }
-
         //In a TSection platform, check if the player can turn. Other wise he only can run forward
         private void OnTriggerEnter(Collider other)
         {
@@ -133,7 +134,7 @@ namespace PlayerManager
                 canTurn = true;
             }
         }
-
+        //After a TSection platform, disable player turn
         private void OnTriggerExit(Collider other)
         {
             if (other is CapsuleCollider)
@@ -212,10 +213,10 @@ namespace PlayerManager
         }
         #endregion
         #region Player Actions
-        private void PlayerAttack()
+        public void PlayerAttack()
         {
             //check if player is not jumping before attack
-            if (playerAnim.GetBool("isJumping") == false)
+            if (!PlayerController.isDead && playerAnim.GetBool("isJumping") == false)
             {
                 playerAnim.SetBool("isMagic", true);
             }
