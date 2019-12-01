@@ -540,7 +540,7 @@ Transform:
   m_LocalScale: {x: 35, y: 1.5, z: 37}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &655832870
 GameObject:
@@ -773,7 +773,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &849967434
 GameObject:
@@ -786,7 +786,7 @@ GameObject:
   - component: {fileID: 849967436}
   - component: {fileID: 849967435}
   m_Layer: 0
-  m_Name: World
+  m_Name: GenerateWorld
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -816,7 +816,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1034873360
 GameObject:
@@ -1782,7 +1782,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 2.0999756, y: -54.799988}
+  m_AnchoredPosition: {x: 2.0999756, y: -54.80005}
   m_SizeDelta: {x: -222.8, y: -336.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1488896999
@@ -2150,7 +2150,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1788417503
 GameObject:
@@ -2453,7 +2453,7 @@ RectTransform:
   - {fileID: 1488896998}
   - {fileID: 1469665264}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2510,7 +2510,7 @@ PrefabInstance:
     - target: {fileID: 149282167959589474, guid: 8028e2b5c7a10bb40aee219d902ea0a6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 149282167959589474, guid: 8028e2b5c7a10bb40aee219d902ea0a6,
         type: 3}

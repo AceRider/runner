@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using Runner.Utils;
 using Runner.Common;
@@ -65,12 +62,12 @@ namespace PlayerManager
             soundEffect = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
 
             //to create the first platform attached
-            GenerateWorld.RunDummy();
+            World.GenerateWorld.RunGenerator();
 
             GetUpdatedHighScore();
             GetUpdatedLives();
         }
-        // Update is called once per frame
+        // Get the controls input by the user
         void Update()
         {
             if (PlayerController.isDead) return;
@@ -122,8 +119,8 @@ namespace PlayerManager
         //In a TSection platform, check if the player can turn. Other wise he only can run forward
         private void OnTriggerEnter(Collider other)
         {
-            if (other is BoxCollider && GenerateWorld.lastPlatform.tag != "platformTSection")
-                GenerateWorld.RunDummy();
+            if (other is BoxCollider && World.GenerateWorld.recentPlatform.tag != "platformTSection")
+                World.GenerateWorld.RunGenerator();
 
             if (other is CapsuleCollider)
             {
@@ -254,11 +251,11 @@ namespace PlayerManager
         private void PlayerTurnDirection()
         {
             //update dummy to create platform after change direction
-            GenerateWorld.dummyTraveller.transform.forward = -this.transform.forward;
-            GenerateWorld.RunDummy();
+            World.GenerateWorld.worldGenerator.transform.forward = -this.transform.forward;
+            World.GenerateWorld.RunGenerator();
 
-            if (GenerateWorld.lastPlatform.tag != "platformTSection")
-                GenerateWorld.RunDummy();
+            if (World.GenerateWorld.recentPlatform.tag != "platformTSection")
+                World.GenerateWorld.RunGenerator();
 
             this.transform.position = new Vector3(startPosition.x, this.transform.position.y, startPosition.z);
         }

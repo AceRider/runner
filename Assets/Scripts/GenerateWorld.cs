@@ -4,52 +4,59 @@ using UnityEngine;
 using Runner.Utils;
 using Runner.Common;
 
-public class GenerateWorld : MonoBehaviour
+namespace World
 {
-    static public GameObject dummyTraveller;
-    static public GameObject lastPlatform;
-
-    void Awake()
+    public class GenerateWorld : MonoBehaviour
     {
-        dummyTraveller = new GameObject("dummy");
-    }
-
-    public void QuitToMenu()
-    {
-        RunnerUtils.OpenScene(RunnerSceneType.Menu);
-    }
-
-    public static void RunDummy()
-    {
-        GameObject p = Pool.singleton.GetRandom();
-        if (p == null) return;
-
-        if (lastPlatform != null)
+        #region Public static properties
+        public static GameObject worldGenerator;
+        public static GameObject recentPlatform;
+        #endregion
+        void Awake()
         {
-            if(lastPlatform.gameObject.tag == "platformTSection")
+            worldGenerator = new GameObject("dummy");
+        }
+        #region Generator methods
+        //Run the generator to create the world
+        public static void RunGenerator()
+        {
+            //get a random platform from the pool
+            GameObject pool = Pool.singleton.GetRandom();
+            if (pool == null) return;
+
+            if (recentPlatform != null)
             {
-                dummyTraveller.transform.position = lastPlatform.transform.position + PlayerManager.PlayerController.player.transform.forward * 20;
+                //if is TSection, push futher
+                if (recentPlatform.gameObject.tag == "platformTSection")
+                    SetWorldGenPosition(20);
+                else
+                    SetWorldGenPosition(10);
+
+                //if is StairSection, generate the world to up
+                if (recentPlatform.tag == "stairsUp")
+                    worldGenerator.transform.Translate(0, 5, 0);
             }
-            else
+            recentPlatform = pool;
+            pool.SetActive(true);
+            pool.transform.position = worldGenerator.transform.position;
+            pool.transform.rotation = worldGenerator.transform.rotation;
+
+            //if stairsdown, generate the world to down and rotate the stairs to match others platforms
+            if (pool.tag == "stairsDown")
             {
-                dummyTraveller.transform.position = lastPlatform.transform.position + PlayerManager.PlayerController.player.transform.forward * 10;
-            }   
-
-            if (lastPlatform.tag == "stairsUp")
-                dummyTraveller.transform.Translate(0, 5, 0);
+                worldGenerator.transform.Translate(0, -5, 0);
+                pool.transform.Rotate(0, 180, 0);
+                pool.transform.position = worldGenerator.transform.position;
+            }
         }
-
-        lastPlatform = p;
-        p.SetActive(true);
-        p.transform.position = dummyTraveller.transform.position;
-        p.transform.rotation = dummyTraveller.transform.rotation;
-
-        if (p.tag == "stairsDown")
+        private static void SetWorldGenPosition(int fwd)
         {
-            dummyTraveller.transform.Translate(0, -5, 0);
-            p.transform.Rotate(0, 180, 0);
-            p.transform.position = dummyTraveller.transform.position;
+            worldGenerator.transform.position = recentPlatform.transform.position + PlayerManager.PlayerController.player.transform.forward * fwd;
         }
-
+        #endregion
+        public void QuitToMenu()
+        {
+            RunnerUtils.OpenScene(RunnerSceneType.Menu);
+        }
     }
 }
