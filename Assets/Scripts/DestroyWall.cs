@@ -2,47 +2,51 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//Check the wall is triggered and explode it
 public class DestroyWall : MonoBehaviour
 {
-    public GameObject[] bricks;
-    List<Rigidbody> bricksRBs = new List<Rigidbody>();
-    List<Vector3> positions = new List<Vector3>();
-    List<Quaternion> rotations = new List<Quaternion>();
-    Collider col;
-    public GameObject explotion;
-    
+    #region Public properties
+    public GameObject[] blocks;
+    public GameObject explosion;
+    #endregion
+    #region Private properties
+    private List<Rigidbody> blockRigidbodyList = new List<Rigidbody>();
+    private List<Vector3> positionList = new List<Vector3>();
+    private List<Quaternion> rotationList = new List<Quaternion>();
+    private Collider blockCollider;
+    #endregion
     private void Awake()
     {
-        //get the list of blocks
-        col = this.GetComponent<Collider>();
-        foreach(GameObject b in bricks)
+        //get the list of blocks in the wall
+        blockCollider = this.GetComponent<Collider>();
+        foreach(GameObject block in blocks)
         {
-            bricksRBs.Add(b.GetComponent<Rigidbody>());
-            positions.Add(b.transform.localPosition);
-            rotations.Add(b.transform.localRotation);
+            blockRigidbodyList.Add(block.GetComponent<Rigidbody>());
+            positionList.Add(block.transform.localPosition);
+            rotationList.Add(block.transform.localRotation);
         }
     }
     private void OnEnable()
     {
-        col.enabled = true;
-        for(int i=0;i< bricks.Length;i++)
+        blockCollider.enabled = true;
+        for(int i=0;i< blocks.Length;i++)
         {
-            bricks[i].transform.localPosition = positions[i];
-            bricks[i].transform.localRotation = rotations[i];
-            bricksRBs[i].isKinematic = true;
+            blocks[i].transform.localPosition = positionList[i];
+            blocks[i].transform.localRotation = rotationList[i];
+            blockRigidbodyList[i].isKinematic = true;
         }
     }
-
     private void OnCollisionEnter(Collision collision)
     {
+        //check if the player attacked the wall
         if (collision.gameObject.tag == "Hadouken")
         {
-            GameObject explotionObj = Instantiate(explotion, collision.contacts[0].point, Quaternion.identity);
+            GameObject explotionObj = Instantiate(explosion, collision.contacts[0].point, Quaternion.identity);
             Destroy(explotionObj, 2.5f);
             //using the list of blocks to deactivate kinematic and apply physics
-            col.enabled = false;
-            foreach (Rigidbody r in bricksRBs)
-                r.isKinematic = false;
+            blockCollider.enabled = false;
+            foreach (Rigidbody rigidbody in blockRigidbodyList)
+                rigidbody.isKinematic = false;
         }
     }
 }

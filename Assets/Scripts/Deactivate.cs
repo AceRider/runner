@@ -4,22 +4,22 @@ using UnityEngine;
 
 public class Deactivate : MonoBehaviour
 {
-    bool dScheduled = false;
+    bool isDeactivate = false;
     
     //remove platform after the player run
     private void OnCollisionExit(Collision player)
     {
         if (PlayerManager.PlayerController.isDead) return;
-        if (player.gameObject.tag == "Player" && !dScheduled)
+        if (player.gameObject.tag == "Player" && !isDeactivate)
         {
             Invoke("SetInactive", 4.0f);
-            dScheduled = true;
+            isDeactivate = true;
         }
     }
 
     void SetInactive()
     {
         this.gameObject.SetActive(false);
-        dScheduled = false;
+        isDeactivate = false;
     }
 }
