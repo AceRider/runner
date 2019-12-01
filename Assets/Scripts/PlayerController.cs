@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     Animator anim;
     public static GameObject player;
     public static GameObject currentPlatform;
+    public static AudioSource[] soundEffect;
+
     bool canTurn = false;
     Vector3 startPosition;
     public static bool isDead;
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
         anim = this.GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody>();
         aRb = attack.GetComponent<Rigidbody>();
+        soundEffect = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
 
         player = this.gameObject;
         startPosition = player.transform.position;
