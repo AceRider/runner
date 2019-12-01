@@ -79,10 +79,6 @@ namespace PlayerManager
             {
                 PlayerJump();
             }
-            //else if (SwipeInput.Instance.DoubleTap)
-            //{
-            //    PlayerAttack();
-            //}
             else if (SwipeInput.Instance.SwipeRight)
             {
                 PlayerRight();
