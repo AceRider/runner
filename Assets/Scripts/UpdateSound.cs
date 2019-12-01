@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 namespace MainMenu
 {
+    //Control the sound effect
     public class UpdateSound : MonoBehaviour
     {
-        List<AudioSource> soundEffect = new List<AudioSource>();
-        // Start is called before the first frame update
+        private List<AudioSource> soundEffect = new List<AudioSource>();
+        
         public void Start()
         {
-            AudioSource[] allAS = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
-            for (int i = 1; i < allAS.Length; i++)
-                soundEffect.Add(allAS[i]);
+            AudioSource[] audioSourceArray = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
+
+            for (int i = 1; i < audioSourceArray.Length; i++)
+                soundEffect.Add(audioSourceArray[i]);
 
             Slider soundEffectSlider = this.GetComponent<Slider>();
 

@@ -20,5 +20,6 @@ namespace Runner.Utils
         {
             SceneManager.LoadScene((int)scene, LoadSceneMode.Single);
         }
+
     }
 }

@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 namespace MainMenu
 {
+    //Control the music
     public class UpdateMusic : MonoBehaviour
     {
-        List<AudioSource> music = new List<AudioSource>();
-        // Start is called before the first frame update
+        private List<AudioSource> music = new List<AudioSource>();
+        
         public void Start()
         {
-            AudioSource[] allAS = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
-            music.Add(allAS[0]);
+            AudioSource[] audioSourceArray = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
+            music.Add(audioSourceArray[0]);
 
             Slider musicSlider = this.GetComponent<Slider>();
 

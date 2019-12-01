@@ -6,7 +6,7 @@ namespace World
 {
     public class Scroll : MonoBehaviour
     {
-        //This is to occur in the same time of the game
+        //Make the game object scroll below the character in the generated world
         private void FixedUpdate()
         {
             if (PlayerManager.PlayerController.isDead) return;
@@ -14,6 +14,7 @@ namespace World
             this.transform.position += PlayerManager.PlayerController.player.transform.forward * -0.1f;
 
             if (PlayerManager.PlayerController.currentPlatform == null) return;
+
             //the starcase is 60 degree
             if (PlayerManager.PlayerController.currentPlatform.tag == "stairsUp")
                 this.transform.Translate(0, -0.06f, 0);
