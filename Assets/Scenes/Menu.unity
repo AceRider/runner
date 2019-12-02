@@ -926,7 +926,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4683e99604150de44977ab3ad613ae32, type: 3}
+    m_Font: {fileID: 12800000, guid: c1b166961afbe964194a333d6399d051, type: 3}
     m_FontSize: 94
     m_FontStyle: 0
     m_BestFit: 0
@@ -1785,7 +1785,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4683e99604150de44977ab3ad613ae32, type: 3}
+    m_Font: {fileID: 12800000, guid: c1b166961afbe964194a333d6399d051, type: 3}
     m_FontSize: 90
     m_FontStyle: 0
     m_BestFit: 0
@@ -3148,7 +3148,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 4683e99604150de44977ab3ad613ae32, type: 3}
+    m_Font: {fileID: 12800000, guid: c1b166961afbe964194a333d6399d051, type: 3}
     m_FontSize: 122
     m_FontStyle: 0
     m_BestFit: 0
@@ -3500,8 +3500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb9598283a3cd06488eb1cd21b6ef1d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastScore: {fileID: 545132923}
-  highestScore: {fileID: 1895459517}
 --- !u!1 &1895459515
 GameObject:
   m_ObjectHideFlags: 0
