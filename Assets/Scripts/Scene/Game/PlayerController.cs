@@ -272,15 +272,15 @@ namespace Runner.Scene.Game
 
         private void UpdateMobile()
         {
-            if (SwipeInput.Instance.SwipeUp)
+            if (SwipeManager.Instance.SwipeUp)
             {
                 PlayerJump();
             }
-            else if (SwipeInput.Instance.SwipeRight)
+            else if (SwipeManager.Instance.SwipeRight)
             {
                 PlayerRight();
             }
-            else if (SwipeInput.Instance.SwipeLeft)
+            else if (SwipeManager.Instance.SwipeLeft)
             {
                 PlayerLeft();
             }

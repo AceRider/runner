@@ -7,9 +7,33 @@ namespace Runner.Control
 {
     public class SwipeManager : MonoBehaviour
     {
+        #region Instance
+        private static SwipeManager instance;
+        public static SwipeManager Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = FindObjectOfType<SwipeManager>();
+                    if (instance == null)
+                    {
+                        instance = new GameObject("Spawned SwipeManager", typeof(SwipeManager)).GetComponent<SwipeManager>();
+                    }
+                }
+
+                return instance;
+            }
+            set
+            {
+                instance = value;
+            }
+        }
+        #endregion
+
         #region Public properties
         [Header("PlayerControl")]
-        public float swipeDistance = 0.1f;
+        public float swipeDistance = 20f;
         #endregion
 
         #region Private properties
@@ -43,7 +67,7 @@ namespace Runner.Control
                         fingerDown = positionCurrent;
                     }
 
-                    if ((touch.phase == TouchPhase.Moved) || (touch.phase == TouchPhase.Ended))
+                    if ((touch.phase == TouchPhase.Ended))
                     {
                         fingerDown = positionCurrent;
                         DetectSwipe();
