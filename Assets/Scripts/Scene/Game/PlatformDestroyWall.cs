@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Runner.Scene.Game
 {
     //Check the wall is triggered and explode it
-    public class DestroyWall : MonoBehaviour
+    public class PlatformDestroyWall : MonoBehaviour
     {
         #region Public properties
         public GameObject[] blocks;

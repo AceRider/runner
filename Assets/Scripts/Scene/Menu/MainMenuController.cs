@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Runner.Common;
 
-namespace MainMenu
+namespace Runner.Menu
 {
     public class MainMenuController : MonoBehaviour
     {

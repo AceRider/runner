@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Runner.Menu
 {
     //Control the sound effect
-    public class UpdateSound : MonoBehaviour
+    public class MenuSoundDisplay : MonoBehaviour
     {
         private List<AudioSource> soundEffect = new List<AudioSource>();
         

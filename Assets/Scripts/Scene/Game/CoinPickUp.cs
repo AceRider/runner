@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Runner.Scene.Game
 {
-    public class PickUp : MonoBehaviour
+    public class CoinPickUp : MonoBehaviour
     {
         #region Private properties
         private MeshRenderer[] meshArray;
@@ -20,7 +20,7 @@ namespace Runner.Scene.Game
             //check if the player picks the coin
             if (other.gameObject.tag == "Player")
             {
-                GameData.singleton.UpdateScore(10);
+                GameDataManager.singleton.UpdateScore(10);
                 PlayerController.soundEffect[1].Play();
                 foreach (MeshRenderer meshObj in meshArray)
                     meshObj.enabled = false;

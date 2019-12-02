@@ -1428,23 +1428,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab190bd593beb1d4598a6a087fc853f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bricks:
-  - {fileID: 3057987968036913175}
-  - {fileID: 3057987966783947712}
-  - {fileID: 3057987966680425261}
-  - {fileID: 3057987967519423367}
-  - {fileID: 3057987967327689032}
-  - {fileID: 3057987967026290893}
-  - {fileID: 3057987966910573717}
-  - {fileID: 3057987966480986154}
-  - {fileID: 3057987966910233673}
-  - {fileID: 3057987966522549516}
-  - {fileID: 3057987966482210429}
-  - {fileID: 3057987967645586147}
-  - {fileID: 3057987967988814156}
-  - {fileID: 3057987966858381136}
-  - {fileID: 3057987968012728435}
-  explotion: {fileID: 1862248141223905658, guid: afb1ddae14ab49741bfa3fbfc5a1bf15,
+  blocks: []
+  explosion: {fileID: 1862248141223905658, guid: afb1ddae14ab49741bfa3fbfc5a1bf15,
     type: 3}
 --- !u!1 &3057987967988814156
 GameObject:
@@ -1990,7 +1975,7 @@ GameObject:
   - component: {fileID: 545465538889662025}
   - component: {fileID: 4561935299335507848}
   m_Layer: 0
-  m_Name: platformZWall
+  m_Name: PlatformZWall
   m_TagString: platformZ
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

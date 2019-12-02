@@ -6,7 +6,7 @@ using UnityEngine.UI;
 namespace Runner.Menu
 {
     //Control the music
-    public class UpdateMusic : MonoBehaviour
+    public class MenuMusicDisplay : MonoBehaviour
     {
         private List<AudioSource> music = new List<AudioSource>();
         

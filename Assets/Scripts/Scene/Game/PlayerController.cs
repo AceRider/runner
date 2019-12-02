@@ -62,7 +62,7 @@ namespace Runner.Scene.Game
             soundEffect = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
 
             //to create the first platform attached
-            GenerateWorld.RunGenerator();
+            PlataformGenerator.RunGenerator();
 
             GetUpdatedHighScore();
             GetUpdatedLives();
@@ -119,8 +119,8 @@ namespace Runner.Scene.Game
         //In a TSection platform, check if the player can turn. Other wise he only can run forward
         private void OnTriggerEnter(Collider other)
         {
-            if (other is BoxCollider && GenerateWorld.recentPlatform.tag != "platformTSection")
-                GenerateWorld.RunGenerator();
+            if (other is BoxCollider && PlataformGenerator.recentPlatform.tag != "platformTSection")
+                PlataformGenerator.RunGenerator();
 
             if (other is CapsuleCollider)
             {
@@ -250,12 +250,12 @@ namespace Runner.Scene.Game
         }
         private void PlayerTurnDirection()
         {
-            //update dummy to create platform after change direction
-            GenerateWorld.worldGenerator.transform.forward = -this.transform.forward;
-            GenerateWorld.RunGenerator();
+            //update generator to create platform after change direction
+            PlataformGenerator.worldGenerator.transform.forward = -this.transform.forward;
+            PlataformGenerator.RunGenerator();
 
-            if (GenerateWorld.recentPlatform.tag != "platformTSection")
-                GenerateWorld.RunGenerator();
+            if (PlataformGenerator.recentPlatform.tag != "platformTSection")
+                PlataformGenerator.RunGenerator();
 
             this.transform.position = new Vector3(startPosition.x, this.transform.position.y, startPosition.z);
         }

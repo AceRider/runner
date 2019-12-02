@@ -5,7 +5,7 @@ using Runner.Common;
 
 namespace Runner.Scene.Game
 {
-    public class GenerateWorld : MonoBehaviour
+    public class PlataformGenerator : MonoBehaviour
     {
         #region Public static properties
         public static GameObject worldGenerator;
@@ -20,7 +20,7 @@ namespace Runner.Scene.Game
         public static void RunGenerator()
         {
             //get a random platform from the pool
-            GameObject pool = Pool.singleton.GetRandom();
+            GameObject pool = PlatformObjPool.singleton.GetRandom();
             if (pool == null) return;
 
             if (recentPlatform != null)

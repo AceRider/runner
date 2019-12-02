@@ -392,7 +392,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Help
+  m_Text: Tutorial
 --- !u!222 &54461419
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -704,8 +704,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c1c2bfd14d127d42b98de07dbb498d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panels: []
-  mmButons: []
+  menuPanelsArray: []
+  menuButtonsArray: []
 --- !u!4 &298787239
 Transform:
   m_ObjectHideFlags: 0
@@ -1475,7 +1475,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Stats
+  m_Text: Score
 --- !u!222 &982989488
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1612,7 +1612,7 @@ GameObject:
   - component: {fileID: 1069343943}
   - component: {fileID: 1069343942}
   m_Layer: 5
-  m_Name: StatsButton
+  m_Name: ScoreButton
   m_TagString: mmbutton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1903,7 +1903,7 @@ GameObject:
   - component: {fileID: 1226218803}
   - component: {fileID: 1226218802}
   m_Layer: 0
-  m_Name: GameData
+  m_Name: GameDataManager
   m_TagString: gamedata
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3423,7 +3423,7 @@ GameObject:
   - component: {fileID: 1855550966}
   - component: {fileID: 1855550968}
   m_Layer: 5
-  m_Name: StatsPanel
+  m_Name: ScorePanel
   m_TagString: subpanel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4078,7 +4078,7 @@ GameObject:
   - component: {fileID: 2011934847}
   - component: {fileID: 2011934846}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4306,7 +4306,7 @@ GameObject:
   - component: {fileID: 2039257407}
   - component: {fileID: 2039257406}
   m_Layer: 5
-  m_Name: StatsText
+  m_Name: ScoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

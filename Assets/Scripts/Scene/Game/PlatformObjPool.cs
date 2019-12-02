@@ -37,11 +37,11 @@ namespace Runner.Scene.Game
         }
     }
     #endregion
-    public class Pool : MonoBehaviour
+    public class PlatformObjPool : MonoBehaviour
     {
         #region Public properties
         //use a single Pool for all game and keep using again the objects to improved memory use
-        public static Pool singleton;
+        public static PlatformObjPool singleton;
         public List<PoolItem> itemList;
         public List<GameObject> pooledItemList;
         #endregion

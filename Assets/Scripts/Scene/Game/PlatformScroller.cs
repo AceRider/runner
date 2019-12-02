@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runner.Scene.Game
 {
-    public class Scroll : MonoBehaviour
+    public class PlatformScroller : MonoBehaviour
     {
         //Make the game object scroll below the character in the generated world
         private void FixedUpdate()

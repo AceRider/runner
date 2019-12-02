@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace World
+namespace Runner.Control
 {
-    public class RegisterScore : MonoBehaviour
+    public class ScoreTextUpdater : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()
         {
-            GameData.singleton.scoreText = this.GetComponent<Text>();
-            GameData.singleton.UpdateScore(0);
+            GameDataManager.singleton.scoreText = this.GetComponent<Text>();
+            GameDataManager.singleton.UpdateScore(0);
         }
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Runner.Scene.Game
 {
-    public class Deactivate : MonoBehaviour
+    public class PlatformDisabler : MonoBehaviour
     {
         bool isDeactivate = false;
 
