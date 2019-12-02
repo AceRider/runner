@@ -1051,8 +1051,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tutorial\n\n\r\nSwipe left and right to control the character\r\n\nDouble-click
-    to attack the obstacles\n\nGet the coins to increase your score!"
+  m_Text: "Tutorial\n\n\r\nSwipe left and right to control the character\r\n\nGet
+    the coins to increase your score!"
 --- !u!222 &433821935
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1524,7 +1524,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 565.2}
+  m_AnchoredPosition: {x: 0, y: 384}
   m_SizeDelta: {x: 930, y: 1748}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &997770323
@@ -3278,7 +3278,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 565.2}
+  m_AnchoredPosition: {x: 0, y: 384}
   m_SizeDelta: {x: 930, y: 1748}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1630913624
@@ -4190,7 +4190,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1080, y: 1920}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
