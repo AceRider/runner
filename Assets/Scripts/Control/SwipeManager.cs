@@ -67,7 +67,7 @@ namespace Runner.Control
                         fingerDown = positionCurrent;
                     }
 
-                    if ((touch.phase == TouchPhase.Ended))
+                    if (touch.phase == TouchPhase.Ended)
                     {
                         fingerDown = positionCurrent;
                         DetectSwipe();
@@ -85,7 +85,6 @@ namespace Runner.Control
             {
                 if (fingerDown.y - fingerUp.y > 0)
                 {
-                    //textScreen.text = "UP";
                     swipeUp = true;
                 }
                 fingerUp = fingerDown;
@@ -95,13 +94,11 @@ namespace Runner.Control
             {
                 if (fingerDown.x - fingerUp.x < 0)
                 {
-                    //textScreen.text = "RIGHT";
-                    swipeRight = true;
+                    swipeLeft = true;
                 }
                 else if (fingerDown.x - fingerUp.x > 0)
                 {
-                    //textScreen.text = "LEFT";
-                    swipeLeft = true;
+                    swipeRight = true;
                 }
                 fingerUp = fingerDown;
 

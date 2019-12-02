@@ -42,7 +42,7 @@ namespace Runner.Scene.Game
         private Vector3 startPosition;
         private Rigidbody playerRigidbody;
         private Rigidbody attackRigidbody;
-        private string highScoreText;
+        private int highestScore;
         #endregion
 
         #region String properties
@@ -133,11 +133,13 @@ namespace Runner.Scene.Game
         {
             if (PlayerPrefs.HasKey("highscore"))
             {
-                highScore.text = highScoreStr + PlayerPrefs.GetInt("highscore");
+                highestScore = PlayerPrefs.GetInt("highscore");
+                highScore.text = highScoreStr + highestScore;
             }
             else
             {
-                highScore.text = highScoreStr + "0";
+                highestScore = 0;
+                highScore.text = highScoreStr + highestScore;
             }
         }
 
@@ -147,8 +149,8 @@ namespace Runner.Scene.Game
             PlayerPrefs.SetInt("lastscore", PlayerPrefs.GetInt("score"));
             if (PlayerPrefs.HasKey("highscore"))
             {
-                int hs = PlayerPrefs.GetInt("highscore");
-                if (hs < PlayerPrefs.GetInt("score"))
+                int hightScore = PlayerPrefs.GetInt("highscore");
+                if (hightScore < PlayerPrefs.GetInt("score"))
                     PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
             }
             else

@@ -55,7 +55,7 @@ namespace Runner.Scene.Game
             {
                 for (int i = 0; i < item.amount; i++)
                 {
-                    GameObject obj = Instantiate(item.prefab);
+                    GameObject obj = Instantiate(item.prefab, transform);
                     obj.SetActive(false);
                     pooledItemList.Add(obj);
                 }
@@ -78,7 +78,7 @@ namespace Runner.Scene.Game
             {
                 if (item.necessary)
                 {
-                    GameObject obj = Instantiate(item.prefab);
+                    GameObject obj = Instantiate(item.prefab, transform);
                     obj.SetActive(false);
                     pooledItemList.Add(obj);
                     return obj;
