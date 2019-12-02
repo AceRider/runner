@@ -47,6 +47,7 @@ namespace Runner.Scene.Game
                 Destroy(explotionObj, 2.5f);
                 //using the list of blocks to deactivate kinematic and apply physics
                 blockCollider.enabled = false;
+                collision.gameObject.SetActive(false);
                 foreach (Rigidbody rigidbody in blockRigidbodyList)
                     rigidbody.isKinematic = false;
             }

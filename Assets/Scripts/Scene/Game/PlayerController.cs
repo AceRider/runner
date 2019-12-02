@@ -58,7 +58,7 @@ namespace Runner.Scene.Game
             playerAnim = this.GetComponent<Animator>();
             playerRigidbody = this.GetComponent<Rigidbody>();
             attackRigidbody = attack.GetComponent<Rigidbody>();
-
+            
             soundEffect = GameObject.FindWithTag("gamedata").GetComponentsInChildren<AudioSource>();
 
             //to create the first platform attached
@@ -66,24 +66,6 @@ namespace Runner.Scene.Game
 
             GetUpdatedHighScore();
             GetUpdatedLives();
-        }
-        // Get the controls input by the user
-        void Update()
-        {
-            if (PlayerController.isDead) return;
-
-            if (SwipeInput.Instance.SwipeUp)
-            {
-                PlayerJump();
-            }
-            else if (SwipeInput.Instance.SwipeRight)
-            {
-                PlayerRight();
-            }
-            else if (SwipeInput.Instance.SwipeLeft)
-            {
-                PlayerLeft();
-            }
         }
         #region Collision & Trigger
         //The collision to check when the character dies.
@@ -260,5 +242,48 @@ namespace Runner.Scene.Game
             this.transform.position = new Vector3(startPosition.x, this.transform.position.y, startPosition.z);
         }
         #endregion
+        // Get the controls input by the user
+        void Update()
+        {
+            if (PlayerController.isDead) return;
+
+            #if UNITY_EDITOR
+                     UpdateStandalone();
+            #else
+                    UpdateMobile();
+            #endif
+        }
+                   
+        private void UpdateStandalone()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                PlayerJump();
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                PlayerRight();
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                PlayerLeft();
+            }
+        }
+
+        private void UpdateMobile()
+        {
+            if (SwipeInput.Instance.SwipeUp)
+            {
+                PlayerJump();
+            }
+            else if (SwipeInput.Instance.SwipeRight)
+            {
+                PlayerRight();
+            }
+            else if (SwipeInput.Instance.SwipeLeft)
+            {
+                PlayerLeft();
+            }
+        }     
     }
 }

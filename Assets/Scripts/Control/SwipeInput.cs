@@ -30,11 +30,11 @@ namespace Runner.Control
         }
         #endregion
 
-        [Header("Tweaks")]
+        [Header("Custom")]
         [SerializeField] private float deadzone = 100.0f;
         [SerializeField] private float doubleTapDelta = 0.5f;
 
-        [Header("Logic")]
+        
         private bool tap, doubleTap, swipeLeft, swipeRight, swipeUp, swipeDown;
         private Vector2 swipeDelta, startTouch;
         private float lastTap;
@@ -61,61 +61,6 @@ namespace Runner.Control
             // Reset our bools
             tap = doubleTap = swipeLeft = swipeRight = swipeUp = swipeDown = false;
 
-#if UNITY_EDITOR
-            UpdateStandalone();
-#else
-        UpdateMobile();
-#endif
-        }
-
-        private void UpdateStandalone()
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                tap = true;
-                startTouch = Input.mousePosition;
-                doubleTap = Time.time - lastTap < doubleTapDelta;
-                lastTap = Time.time;
-            }
-            else if (Input.GetMouseButtonUp(0))
-            {
-                startTouch = swipeDelta = Vector2.zero;
-            }
-
-            // Reset distance, get the new swipeDelta
-            swipeDelta = Vector2.zero;
-
-            if (startTouch != Vector2.zero && Input.GetMouseButton(0))
-                swipeDelta = (Vector2)Input.mousePosition - startTouch;
-
-            //Checking if our delta is beyond deadzone
-            if (swipeDelta.sqrMagnitude > sqrDeadzone)
-            {
-                // We're beyond the deadzone, this is a swipe
-                // Now we need to figure out in which direction it goes
-                float x = swipeDelta.x;
-                float y = swipeDelta.y;
-                if (Mathf.Abs(x) > Mathf.Abs(y))
-                {
-                    //Left or right
-                    if (x < 0)
-                        swipeLeft = true;
-                    else
-                        swipeRight = true;
-                }
-                else
-                {
-                    //Up or down
-                    if (y < 0)
-                        swipeDown = true;
-                    else
-                        swipeUp = true;
-                }
-                startTouch = swipeDelta = Vector2.zero;
-            }
-        }
-        private void UpdateMobile()
-        {
             if (Input.touches.Length != 0)
             {
                 if (Input.touches[0].phase == TouchPhase.Began)
@@ -163,6 +108,10 @@ namespace Runner.Control
                 }
                 startTouch = swipeDelta = Vector2.zero;
             }
+
         }
+
+        
+       
     }
 }

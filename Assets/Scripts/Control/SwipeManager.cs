@@ -7,20 +7,24 @@ namespace Runner.Control
 {
     public class SwipeManager : MonoBehaviour
     {
+        #region Public properties
+        [Header("PlayerControl")]
+        public float swipeDistance = 0.1f;
+        #endregion
+
+        #region Private properties
         private Vector2 fingerDown;
         private Vector2 fingerUp;
-
-        public float swipeDistance = 25f;
-
         private bool swipeLeft;
         private bool swipeRight;
         private bool swipeUp;
+        #endregion
 
+        #region Public methods
         public bool SwipeLeft { get { return swipeLeft; } }
         public bool SwipeRight { get { return swipeRight; } }
         public bool SwipeUp { get { return swipeUp; } }
-
-        //public Text textScreen;
+        #endregion
 
         void Update()
         {
