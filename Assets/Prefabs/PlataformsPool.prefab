@@ -98,4 +98,8 @@ MonoBehaviour:
       type: 3}
     amount: 2
     necessary: 0
+  - prefab: {fileID: 1374811143486581458, guid: 672edfe3975fce34385e8b1f21ce74f2,
+      type: 3}
+    amount: 2
+    necessary: 0
   pooledItemList: []
