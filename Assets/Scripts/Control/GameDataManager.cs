@@ -63,5 +63,20 @@ namespace Runner.Control
                 //highestScore.text = "Highest Score: 0";
                 return 0;
         }
+
+        public void SetUpdatedHighScore()
+        {
+            PlayerPrefs.SetInt("lastscore", PlayerPrefs.GetInt("score"));
+            if (PlayerPrefs.HasKey("highscore"))
+            {
+                int hightScore = PlayerPrefs.GetInt("highscore");
+                if (hightScore < PlayerPrefs.GetInt("score"))
+                    PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
+            }
+            else
+            {
+                PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
+            }
+        }
     }
 }

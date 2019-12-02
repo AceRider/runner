@@ -27,14 +27,12 @@ namespace Runner.Scene.Game
         [Range(1.0f, 5.0f)]
         public float swipeDistance = 1f;
         #endregion
-
         #region Public static properties
         public static GameObject player;
         public static GameObject currentPlatform;
         public static AudioSource[] soundEffect;
         public static bool isDead;
         #endregion
-
         #region Private properties
         private int livesLeft;
         private Animator playerAnim;
@@ -44,7 +42,6 @@ namespace Runner.Scene.Game
         private Rigidbody attackRigidbody;
         private int highestScore;
         #endregion
-
         #region String properties
         private const string highScoreStr = "High Score: ";
         #endregion
@@ -146,17 +143,7 @@ namespace Runner.Scene.Game
         //Update the HighScore in PlayerPrefs
         private void SetUpdatedHighScore()
         {
-            PlayerPrefs.SetInt("lastscore", PlayerPrefs.GetInt("score"));
-            if (PlayerPrefs.HasKey("highscore"))
-            {
-                int hightScore = PlayerPrefs.GetInt("highscore");
-                if (hightScore < PlayerPrefs.GetInt("score"))
-                    PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
-            }
-            else
-            {
-                PlayerPrefs.SetInt("highscore", PlayerPrefs.GetInt("score"));
-            }
+            GameDataManager.singleton.SetUpdatedHighScore();
         }
         #endregion
         #region Invoke methods
@@ -189,6 +176,51 @@ namespace Runner.Scene.Game
             RunnerUtils.OpenScene(RunnerSceneType.Game);
         }
         #endregion
+        // Get the controls input by the user
+        void Update()
+        {
+            if (PlayerController.isDead) return;
+
+            #if UNITY_EDITOR
+                     UpdateStandalone();
+            #else
+                    UpdateMobile();
+            #endif
+        }
+        #region Editor Actions      
+        private void UpdateStandalone()
+        {
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                PlayerJump();
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                PlayerRight();
+            }
+            else if (Input.GetKeyDown(KeyCode.A))
+            {
+                PlayerLeft();
+            }
+        }
+        #endregion
+        #region Mobile Actions  
+        private void UpdateMobile()
+        {
+            if (SwipeManager.Instance.SwipeUp)
+            {
+                PlayerJump();
+            }
+            else if (SwipeManager.Instance.SwipeRight)
+            {
+                PlayerRight();
+            }
+            else if (SwipeManager.Instance.SwipeLeft)
+            {
+                PlayerLeft();
+            }
+        }
+        #endregion
         #region Player Actions
         public void PlayerAttack()
         {
@@ -198,7 +230,7 @@ namespace Runner.Scene.Game
                 playerAnim.SetBool("isMagic", true);
             }
         }
-        private void PlayerJump()
+        public void PlayerJump()
         {
             //check if player is not attacking before jump
             if (playerAnim.GetBool("isMagic") == false)
@@ -208,7 +240,7 @@ namespace Runner.Scene.Game
                 playerRigidbody.AddForce(Vector3.up * 200);
             }
         }
-        private void PlayerRight()
+        public void PlayerRight()
         {
             if (canTurn)
             {
@@ -220,7 +252,7 @@ namespace Runner.Scene.Game
                 this.transform.Translate(swipeDistance, 0, 0);
             }
         }
-        private void PlayerLeft()
+        public void PlayerLeft()
         {
             if (canTurn)
             {
@@ -244,48 +276,5 @@ namespace Runner.Scene.Game
             this.transform.position = new Vector3(startPosition.x, this.transform.position.y, startPosition.z);
         }
         #endregion
-        // Get the controls input by the user
-        void Update()
-        {
-            if (PlayerController.isDead) return;
-
-            #if UNITY_EDITOR
-                     UpdateStandalone();
-            #else
-                    UpdateMobile();
-            #endif
-        }
-                   
-        private void UpdateStandalone()
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                PlayerJump();
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                PlayerRight();
-            }
-            else if (Input.GetKeyDown(KeyCode.A))
-            {
-                PlayerLeft();
-            }
-        }
-
-        private void UpdateMobile()
-        {
-            if (SwipeManager.Instance.SwipeUp)
-            {
-                PlayerJump();
-            }
-            else if (SwipeManager.Instance.SwipeRight)
-            {
-                PlayerRight();
-            }
-            else if (SwipeManager.Instance.SwipeLeft)
-            {
-                PlayerLeft();
-            }
-        }     
     }
 }
