@@ -1399,7 +1399,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.52}
 --- !u!54 &3057987967648108043
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1428,7 +1428,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab190bd593beb1d4598a6a087fc853f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blocks: []
+  blocks:
+  - {fileID: 3057987968036913175}
+  - {fileID: 3057987966783947712}
+  - {fileID: 3057987966680425261}
+  - {fileID: 3057987967519423367}
+  - {fileID: 3057987967327689032}
+  - {fileID: 3057987967026290893}
+  - {fileID: 3057987966910573717}
+  - {fileID: 3057987966480986154}
+  - {fileID: 3057987966910233673}
+  - {fileID: 3057987966522549516}
+  - {fileID: 3057987966482210429}
+  - {fileID: 3057987967645586147}
+  - {fileID: 3057987967988814156}
+  - {fileID: 3057987966858381136}
+  - {fileID: 3057987968012728435}
   explosion: {fileID: 1862248141223905658, guid: afb1ddae14ab49741bfa3fbfc5a1bf15,
     type: 3}
 --- !u!1 &3057987967988814156
