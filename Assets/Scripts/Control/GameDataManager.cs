@@ -29,8 +29,10 @@ namespace Runner.Control
             #endregion
 
             PlayerPrefs.SetInt("score", 0);
-            musicSlider.GetComponent<MenuMusicDisplay>().Start();
-            soundSlider.GetComponent<MenuSoundDisplay>().Start();
+            if (musicSlider)
+                musicSlider.GetComponent<MenuMusicDisplay>().Start();
+            if (soundSlider)
+                soundSlider.GetComponent<MenuSoundDisplay>().Start();
         }
 
         public void UpdateScore(int score_new)
