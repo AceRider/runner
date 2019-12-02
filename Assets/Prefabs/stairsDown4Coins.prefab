@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 188490633648831258}
   - component: {fileID: 4392770653471899493}
   m_Layer: 0
-  m_Name: stairsDown4Coins
+  m_Name: StairsDown4Coins
   m_TagString: stairsDown
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -334,8 +334,6 @@ Transform:
   m_Children:
   - {fileID: 6789590025036419164}
   - {fileID: 6789590025036419154}
-  - {fileID: 6789590025228713903}
-  - {fileID: 6789590024887142865}
   - {fileID: 3076444399753284451}
   - {fileID: 3580990934147553966}
   - {fileID: 1068649538300691118}
@@ -399,8 +397,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.09, y: 24.35, z: 1.11}
-  m_Center: {x: 0, y: 11.85, z: 4.68}
+  m_Size: {x: 5.09, y: 13.3057575, z: 1.1099997}
+  m_Center: {x: 0, y: 6.327878, z: 4.68}
 --- !u!114 &4392770653471899493
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -899,7 +897,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1900639426acf45d79bd1700ea7ab51a, type: 2}
+  - {fileID: 2100000, guid: 6f3b764d69dc4d04d8e2ce516d2dfaa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2126,7 +2124,7 @@ PrefabInstance:
     - target: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
         type: 3}
@@ -2201,7 +2199,7 @@ PrefabInstance:
     - target: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
         type: 3}
@@ -2276,7 +2274,7 @@ PrefabInstance:
     - target: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
         type: 3}
@@ -2351,7 +2349,7 @@ PrefabInstance:
     - target: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
         type: 3}
@@ -2380,138 +2378,4 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1238631138345980002, guid: 67a5e04eba7fd714bb9e5de4bfc9cae3,
     type: 3}
   m_PrefabInstance: {fileID: 5927855618457928809}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6789590024886752081
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6789590025036419124}
-    m_Modifications:
-    - target: {fileID: 100000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_Name
-      value: stairsUpRail (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -4.98
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bc692801c9fc842a7ba20cd288e57e3e, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
---- !u!4 &6789590024887142865 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd,
-    type: 3}
-  m_PrefabInstance: {fileID: 6789590024886752081}
-  m_PrefabAsset: {fileID: 0}
---- !u!1001 &6789590025228838191
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 6789590025036419124}
-    m_Modifications:
-    - target: {fileID: 100000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_Name
-      value: stairsUpRail
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2300000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bc692801c9fc842a7ba20cd288e57e3e, type: 2}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: cd66a9720e04e4694ad459f56ec79ddd, type: 3}
---- !u!4 &6789590025228713903 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400000, guid: cd66a9720e04e4694ad459f56ec79ddd,
-    type: 3}
-  m_PrefabInstance: {fileID: 6789590025228838191}
   m_PrefabAsset: {fileID: 0}

@@ -875,7 +875,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1900639426acf45d79bd1700ea7ab51a, type: 2}
+  - {fileID: 2100000, guid: 6f3b764d69dc4d04d8e2ce516d2dfaa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -944,7 +944,7 @@ GameObject:
   - component: {fileID: -4057258703129820398}
   - component: {fileID: 6861590179624556256}
   m_Layer: 0
-  m_Name: platformZSplit
+  m_Name: PlatformZSplit
   m_TagString: platformZSplit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

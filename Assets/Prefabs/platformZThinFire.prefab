@@ -270,7 +270,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1900639426acf45d79bd1700ea7ab51a, type: 2}
+  - {fileID: 2100000, guid: 6f3b764d69dc4d04d8e2ce516d2dfaa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1130,7 +1130,7 @@ GameObject:
   - component: {fileID: 6878890816272959808}
   - component: {fileID: 7743615308393134989}
   m_Layer: 0
-  m_Name: platformZThinFire
+  m_Name: PlatformZThinFire
   m_TagString: platformZThin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1223,8 +1223,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.25, y: 8.46, z: 1.15}
-  m_Center: {x: 0, y: 3.99, z: -4.42}
+  m_Size: {x: 2.25, y: 6.0117207, z: 1.1499996}
+  m_Center: {x: 0, y: 2.7658606, z: -4.42}
 --- !u!114 &7743615308393134989
 MonoBehaviour:
   m_ObjectHideFlags: 0

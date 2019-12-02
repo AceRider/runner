@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8482657682564312696}
   - component: {fileID: 7867946219626740618}
   m_Layer: 0
-  m_Name: platformZSplit10CoinsL
+  m_Name: PlatformZSplit10CoinsL
   m_TagString: platformZSplit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1900639426acf45d79bd1700ea7ab51a, type: 2}
+  - {fileID: 2100000, guid: 6f3b764d69dc4d04d8e2ce516d2dfaa3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
