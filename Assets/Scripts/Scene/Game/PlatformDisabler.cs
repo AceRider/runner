@@ -8,6 +8,15 @@ namespace Runner.Scene.Game
     {
         bool isDeactivate = false;
 
+        private void OnCollisionEnter(Collision collision)
+        {
+            //destroy magic ball
+            if (collision.gameObject.tag == "Hadouken")
+            {
+                collision.gameObject.SetActive(false);
+            }
+        }
+
         //remove platform after the player run
         private void OnCollisionExit(Collision player)
         {

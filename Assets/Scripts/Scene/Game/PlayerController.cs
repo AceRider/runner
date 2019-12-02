@@ -14,9 +14,9 @@ namespace Runner.Scene.Game
         public Transform attackStartPos;
 
         [Header("PlayerLives")]
-        public Texture aliveIcon;
-        public Texture deadIcon;
-        public RawImage[] icons;
+        public Texture lifeImg;
+        public Texture deadImg;
+        public RawImage[] livesQntyImg;
 
         [Header("PlayerScore")]
         public GameObject gameOverPanel;
@@ -85,7 +85,7 @@ namespace Runner.Scene.Game
                 else
                 {
                     //no more lives left, show game over screen
-                    icons[0].texture = deadIcon;
+                    livesQntyImg[0].texture = deadImg;
                     gameOverPanel.SetActive(true);
                     attackButton.SetActive(false);
 
@@ -122,10 +122,10 @@ namespace Runner.Scene.Game
         {
             isDead = false;
             livesLeft = PlayerPrefs.GetInt("lives");
-            for (int i = 0; i < icons.Length; i++)
+            for (int i = 0; i < livesQntyImg.Length; i++)
             {
                 if (i >= livesLeft)
-                    icons[i].texture = deadIcon;
+                    livesQntyImg[i].texture = deadImg;
             }
         }
         //Get the HighScore in PlayerPrefs
@@ -164,7 +164,7 @@ namespace Runner.Scene.Game
             //shot the attack from the right hand of the character
             attack.transform.position = attackStartPos.position;
             attack.SetActive(true);
-            attackRigidbody.AddForce(this.transform.forward * 4000);
+            attackRigidbody.AddForce(this.transform.forward * 3000);
             //deactivate the sphere to be used again
             Invoke("KillAttack", 1);
         }
@@ -190,7 +190,7 @@ namespace Runner.Scene.Game
         #region Player Actions
         public void PlayerAttack()
         {
-            //check if player is not jumping before attack
+            //check if player is not jumping before attack  
             if (!PlayerController.isDead && playerAnim.GetBool("isJumping") == false)
             {
                 playerAnim.SetBool("isMagic", true);

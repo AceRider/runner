@@ -1453,8 +1453,8 @@ GameObject:
   - component: {fileID: 8714039327872575901}
   - component: {fileID: 8714039327865570877}
   - component: {fileID: 2962777333892299013}
-  - component: {fileID: -726120455408805531}
   - component: {fileID: 1003923749}
+  - component: {fileID: -726120455408805531}
   - component: {fileID: -6992345339661836160}
   m_Layer: 0
   m_Name: StairsUp
@@ -1512,18 +1512,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: aa3d324a3f5434a2488d85d7b3c73aa6, type: 3}
---- !u!114 &-726120455408805531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8714039327873004989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67003d8c4cd60140b8817c8d21abea7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1003923749
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1537,6 +1525,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5.21, y: 12.44244, z: 1.1999998}
   m_Center: {x: 0, y: 8.966219, z: -4.6}
+--- !u!114 &-726120455408805531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8714039327873004989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c67003d8c4cd60140b8817c8d21abea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &-6992345339661836160
 MonoBehaviour:
   m_ObjectHideFlags: 0
