@@ -43,7 +43,7 @@ namespace Runner.Scene.Game
         private int highestScore;
         #endregion
         #region String properties
-        private const string highScoreStr = "High Score: ";
+       // private const string highScoreStr = "High Score: ";
         #endregion
 
         // Start is called before the first frame update
@@ -131,12 +131,13 @@ namespace Runner.Scene.Game
             if (PlayerPrefs.HasKey("highscore"))
             {
                 highestScore = PlayerPrefs.GetInt("highscore");
-                highScore.text = highScoreStr + highestScore;
+                //highScore.text = highScoreStr + highestScore;
+                highScore.text = RunnerStrings.HIGH_SCORE + highestScore;
             }
             else
             {
                 highestScore = 0;
-                highScore.text = highScoreStr + highestScore;
+                highScore.text = RunnerStrings.HIGH_SCORE + highestScore;
             }
         }
 

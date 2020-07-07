@@ -18,7 +18,8 @@ namespace Runner.Scene.Game
         private void OnTriggerEnter(Collider other)
         {
             //check if the player picks the coin
-            if (other.gameObject.tag == "Player")
+            //if (other.gameObject.tag == "Player")
+            if (other.gameObject.CompareTag("Player"))
             {
                 GameDataManager.singleton.UpdateScore(10);
                 PlayerController.soundEffect[1].Play();
